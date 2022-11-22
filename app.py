@@ -49,10 +49,14 @@ def whodriver(x):
 #         driver = whodriver(str(func[1]))
 #         return render_template("form.html", year=ans, test=driver )
 #  
+@app.route('/')
+def mainpage():
+    return render_template("mainpage.html")
+    
 
 # This is better (But not my way): 
-@app.route('/form', methods = ['POST', 'GET'])
-def data():
+@app.route('/rnddriver', methods = ['POST', 'GET'])
+def rnddriverquiz():
     y, y_id = year() # for next game
     if request.method == 'POST':
         form_data = request.form
