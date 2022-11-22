@@ -53,12 +53,13 @@ def whodriver(x):
 # This is better (But not my way): 
 @app.route('/form', methods = ['POST', 'GET'])
 def data():
+    y, y_id = year() # for next game
     if request.method == 'POST':
         form_data = request.form
-        driver = whodriver(form_data["year_id"])
-        if driver == form_data["answer"]:
-            print("gut")
+        winner = whodriver(form_data["year_id"])
+        answer = form_data["answer"]
+        if winner == answer:
+            return render_template("form.html", year=y, year_id=y_id, result="Correct!")
         else: 
-           print("nix gut") 
-    y, y_id = year()
+            return render_template("form.html", year=y, year_id=y_id, result=f'Wrong! In the year {form_data["year"]} {winner} won!')
     return render_template("form.html", year=y, year_id=y_id)
