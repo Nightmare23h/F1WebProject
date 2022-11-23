@@ -1,6 +1,6 @@
 <form action="/rndcons" method="POST">
   <p>Year: {{ year }}</p>
-  <p>Anwser: <input type="text" name="answer"></p>
+  <p>Anwser: <input type="text" name="answer" autocomplete="off" autofocus></p>
   <input name="year_id" value="{{ year_id }}" hidden>
   <input name="year" value="{{ year }}" hidden>
   <input type="submit" value="Check">

@@ -22,7 +22,7 @@ def rnddriverquiz():
             return render_template("rnddriver.html", year=y, year_id=y_id, result="Correct!")
         else: 
             return render_template("rnddriver.html", year=y, year_id=y_id, result=f'Wrong! In the year {form_data["year"]} {winner} won!')
-    return render_template("form.html", year=y, year_id=y_id)
+    return render_template("rnddriver.html", year=y, year_id=y_id)
 #Constructors Quiz Random
 @app.route('/rndcons', methods = ['POST', 'GET'])
 def rndconquiz():

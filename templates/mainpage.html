@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  <style>
+  body {
+    background-color: black;
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+  }
+  h2 {
+    color: white;
+    text-align: center;
+  }
+  p {
+    font-family: verdana;
+    font-size: 20px;
+  }
+  .buttonwrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: colum;
+  }
+  .button {
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    width: 270px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+  }
+
+  .button:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid red;
+  }
+
+  </style>
+</head>
 <body>
 
 <h1>Welcome to my F1 quiz!</h1>
 <h2>Choose a game:</h2>
-<button  onclick="location.href='/rnddriver'">Drivers Random Years</button>
-<button  onclick="location.href='/rndcons'">Constructors Random Years</button>
+<div class="buttonwrap"><button class="button button1" id="rnddriver"  onclick="location.href='/rnddriver'">Drivers Random Years</button>
+  <button class="button button1" id="rndcons" onclick="location.href='/rndcons'">Constructors Random Years</button></div>
 </body>
 
 </html>
