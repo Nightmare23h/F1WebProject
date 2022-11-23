@@ -7,6 +7,7 @@ app = Flask(__name__)
 @app.route('/__github_webhook', methods=['POST'])
 def github_webhook():
     os.system("git pull")
+    os.system("touch /var/www/nightmare23h_pythonanywhere_com_wsgi.py")
     return "done", 200
 
 
