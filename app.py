@@ -1,7 +1,13 @@
 from flask import Flask,render_template,request
 from functions import yearfordriver, whodriver, yearforconstructor, whoconstructor
-
+import os
+ 
 app = Flask(__name__)
+
+@app.route('/__github_webhook', methods=['POST'])
+def github_webhook():
+    os.system("git pull")
+    return "done", 200
 
 
 @app.route('/')
