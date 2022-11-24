@@ -1,8 +1,50 @@
+<head>
+  <title>F1 Random Constructors Quiz</title>
+  <style>
+    body {
+      background-color: black;
+    }
+    p {
+      color: white;
+      text-align: center;
+      font-family: verdana;
+      font-size: 20px;
+    }
+    
+    .test {
+      text-align: center;
+      margin-bottom: 2%;
+
+    }
+    input[type=text] {
+      border: none;
+      border-bottom: 2px solid red;
+      background-color: black;
+      color: white;
+    }
+    textarea:focus, input:focus{
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<button onclick="location.href='/'">Back to Mainpage</button>
+
+
 <form action="/rndcons" method="POST">
   <p>Year: {{ year }}</p>
-  <p>Anwser: <input type="text" name="answer" autocomplete="off" autofocus></p>
+  <p>Anwser:</p>
   <input name="year_id" value="{{ year_id }}" hidden>
   <input name="year" value="{{ year }}" hidden>
-  <input type="submit" value="Check">
+  <div class="test">
+    <input type="text" name="answer" autocomplete="off" autofocus>
+  </div>
+  <div class = "test">
+    <input type="submit" value="Check">
+  </div>
   <p>Result: {{ result }}</p>
 </form>
+
+</body>
