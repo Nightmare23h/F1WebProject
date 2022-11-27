@@ -31,7 +31,7 @@ textarea:focus, input:focus{
   display: inline-block;
   font-size: 30px;
   margin: 4px 2px;
-  transition-duration: 0.4s;
+
   cursor: pointer;
   background-color: white; 
   color: black; 

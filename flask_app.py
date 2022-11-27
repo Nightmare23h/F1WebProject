@@ -51,7 +51,10 @@ def rndconquiz():
 def driverioquiz():
     if request.method == 'GET':
         session["defYear"]=1
+        session["points"]=0
     elif request.method == 'POST':
+        if (session["defYear"]) % 73 + 1 == 2:
+            session["points"]=0
         y_idold = session["defYear"]
         driverold, yearold = driverio(y_idold)
         session["defYear"] = (session["defYear"]) % 73 + 1
@@ -60,8 +63,10 @@ def driverioquiz():
         form_data = request.form
         answer = form_data["answer"]
         if driverold == answer:
-            return render_template("iodriver.html", year=year, year_id=y_id, result="Correct!")
+            session["points"] = session["points"] + 1
+            print(session["points"], "of 73")
+            return render_template("iodriver.html", year=year, year_id=y_id, points=session["points"], result="Correct!")
         else:
-            return render_template("iodriver.html", year=year, year_id=y_id, result=f'Wrong! In the year {yearold} {driverold} won!')
+            return render_template("iodriver.html", year=year, year_id=y_id, points=session["points"], result=f'Wrong! In the year {yearold} {driverold} won!')
     return render_template("iodriver.html", year="2022", year_id=1)
 
