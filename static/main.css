@@ -24,7 +24,7 @@ textarea:focus, input:focus{
 }
 
 .button {
-  padding: 10px 25px;
+  padding: auto;
   text-align: center;
   text-decoration: none;
   width: auto;
@@ -43,10 +43,10 @@ textarea:focus, input:focus{
   color: white;
   border: 2px solid red;
 }
-@media (max-width: 600px) and (orientation: portrait) {
-  .mobilecenter {
-    display: flex;
-    justify-content: center;
-    flex-direction: colum;
-  }
-}
+/* @media (max-width: 600px) and (orientation: portrait) { */
+/*   .mobilecenter { */
+/*     display: flex; */
+/*     justify-content: center; */
+/*     flex-direction: colum; */
+/*   } */
+/* } */
