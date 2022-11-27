@@ -1,5 +1,3 @@
-
-
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>F1 Random Drivers Quiz</title>
@@ -7,21 +5,21 @@
 
 </head>
 <body>
-
-<button onclick="location.href='/'">Back to Mainpage</button>
-
-<form action="/rnddriver" method="POST">
-  <p>Year: {{ year }}</p>
-  <p>Anwser:</p>
-  <input name="year_id" value="{{ year_id }}" hidden>
-  <input name="year" value="{{ year }}" hidden>
-  <div class="test">
-    <input type="text" name="answer" autocomplete="off" autofocus>
+  <div class="mobilecenter">
+    <button class="button" onclick="location.href='/'">↲</button>
   </div>
+  <form action="/rnddriver" method="POST">
+    <p>Year: {{ year }}</p>
+    <p>Anwser:</p>
+    <input name="year_id" value="{{ year_id }}" hidden>
+    <input name="year" value="{{ year }}" hidden>
+    <div class="test">
+      <input type="text" name="answer" autocomplete="off" autofocus>
+    </div>
 
-  <div class="test">
-    <input type="submit" value="Check">
-  </div>
-  <p>Result: {{ result }}</p>
-</form>
+    <div class="test">
+      <input type="submit" value="Check">
+    </div>
+    <p>Result: {{ result }}</p>
+  </form>
 </body>
