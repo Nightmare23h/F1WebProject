@@ -1,7 +1,7 @@
 from flask import Flask,render_template,request, session
 from functions import yearfordriver, whodriver, yearforconstructor, whoconstructor, driverio
 import os
- 
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY']='moinmeister'
@@ -17,7 +17,7 @@ def github_webhook():
 @app.route('/')
 def mainpage():
     return render_template("mainpage.html")
-     
+
 
 # This is better (But not my way): 
 #Drivers Quiz Random
