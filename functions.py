@@ -25,6 +25,20 @@ def whodriver(x):
     cur.close()
     return driver
 
+def driverio(k):
+    con = sqlite3.connect("F1.db")
+    cur = con.cursor()
+    cur.execute("SELECT year from years WHERE idYears = ?", (k,))
+    yearx = cur.fetchone()
+    cur.execute("SELECT driver_champion from years WHERE idYears = ?", (k,))
+    id = cur.fetchone()
+    cur.execute("SELECT name FROM drivers WHERE idDriver =?", (id))
+    right_anwser = cur.fetchone()
+    driver = str(right_anwser[0])
+    year = str(yearx[0])
+    return driver, year
+    
+
 
 def yearforconstructor():
     con = sqlite3.connect("F1.db")
@@ -47,3 +61,4 @@ def whoconstructor(x):
     constructor = str(right_anwser[0])
     cur.close()
     return constructor
+

@@ -1,8 +1,11 @@
-from flask import Flask,render_template,request
-from functions import yearfordriver, whodriver, yearforconstructor, whoconstructor
+from flask import Flask,render_template,request, session
+from functions import yearfordriver, whodriver, yearforconstructor, whoconstructor, driverio
 import os
  
 app = Flask(__name__)
+
+app.config['SECRET_KEY']='moinmeister'
+
 
 @app.route('/__github_webhook', methods=['POST'])
 def github_webhook():
@@ -44,4 +47,21 @@ def rndconquiz():
             return render_template("rndcon.html", year=y, year_id=y_id, result=f'Wrong! In the year {form_data["year"]} {winner} won!')
     return render_template("rndcon.html", year=y, year_id=y_id)
 #Drivers Quiz IO
+@app.route('/iodriver', methods = ['POST', 'GET'])
+def driverioquiz():
+    if request.method == 'GET':
+        session["defYear"]=1
+    elif request.method == 'POST':
+        y_idold = session["defYear"]
+        driverold, yearold = driverio(y_idold)
+        session["defYear"] = (session["defYear"]) % 73 + 1
+        y_id = session["defYear"]
+        _ , year = driverio(y_id)
+        form_data = request.form
+        answer = form_data["answer"]
+        if driverold == answer:
+            return render_template("iodriver.html", year=year, year_id=y_id, result="Correct!")
+        else:
+            return render_template("iodriver.html", year=year, year_id=y_id, result=f'Wrong! In the year {yearold} {driverold} won!')
+    return render_template("iodriver.html", year="2022", year_id=1)
 
