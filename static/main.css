@@ -24,12 +24,12 @@ textarea:focus, input:focus{
 }
 
 .button {
-  padding: 16px 32px;
+  padding: 10px 25px;
   text-align: center;
   text-decoration: none;
   width: auto;
   display: inline-block;
-  font-size: 16px;
+  font-size: 30px;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
