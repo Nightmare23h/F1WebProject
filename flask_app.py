@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request, session
-from functions import yearfordriver, whodriver, yearforconstructor, whoconstructor, driverio
+from functions import yearfordriver, whodriver, yearforconstructor, whoconstructor, driverio, constructorio
 import os
 #Moin
 app = Flask(__name__)
@@ -70,3 +70,25 @@ def driverioquiz():
             return render_template("iodriver.html", year=year, year_id=y_id, points=session["points"], result=f'Wrong! In the year {yearold} {driverold} won!')
     return render_template("iodriver.html", year="2022", year_id=1)
 
+@app.route('/iocons', methods = ['POST', 'GET'])
+def driverioquiz():
+    if request.method == 'GET':
+        session["defYear"]=1
+        session["points"]=0
+    elif request.method == 'POST':
+        if (session["defYear"]) % 64 + 1 == 2:
+            session["points"]=0
+        y_idold = session["defYear"]
+        driverold, yearold = constructorio(y_idold)
+        session["defYear"] = (session["defYear"]) % 64 + 1
+        y_id = session["defYear"]
+        _ , year = constructorio(y_id)
+        form_data = request.form
+        answer = form_data["answer"]
+        if driverold == answer:
+            session["points"] = session["points"] + 1
+            print(session["points"], "of 64")
+            return render_template("iocons.html", year=year, year_id=y_id, points=session["points"], result="Correct!")
+        else:
+            return render_template("iocons.html", year=year, year_id=y_id, points=session["points"], result=f'Wrong! In the year {yearold} {driverold} won!')
+    return render_template("iocons.html", year="2022", year_id=1)

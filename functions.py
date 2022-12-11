@@ -62,3 +62,15 @@ def whoconstructor(x):
     cur.close()
     return constructor
 
+def constructorio(k):
+    con = sqlite3.connect("F1.db")
+    cur = con.cursor()
+    cur.execute("SELECT year from years WHERE idYears = ?", (k,))
+    yearx = cur.fetchone()
+    cur.execute("SELECT constructor_champion from years WHERE idYears = ?", (k,))
+    id = cur.fetchone()
+    cur.execute("SELECT name_cons FROM constructors WHERE idConstructors =?", (id))
+    right_anwser = cur.fetchone()
+    constructor = str(right_anwser[0])
+    year = str(yearx[0])
+    return constructor, year
